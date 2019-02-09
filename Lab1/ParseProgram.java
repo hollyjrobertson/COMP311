@@ -136,6 +136,13 @@ public class ParseProgram {
                 counter = gt.execute(counter, stack, globals);
             }
             
+            if (currentLine.contains("i32.lte")) {
+                BinaryOperation lte = 
+                        new BinaryOperation(BinaryOperation.Type.Lte);
+                
+                counter = lte.execute(counter, stack, globals);
+            }
+            
             if (currentLine.contains("i32.lt") && 
                     (!currentLine.contains("i32.lte"))) {
                 BinaryOperation lt = 

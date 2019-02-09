@@ -341,5 +341,24 @@ public class WAEngineTest {
                 ), globals);
         
         e.run();
+        
+        assertEquals(1, globals[0]);
+    }
+    
+    /** 
+     * Test method for less than or equal that's false
+     */
+    @Test
+    public void testLteFalse() {
+        e = new WAEngine(new Scanner(
+                "i32.const 12\n"
+                + "i32.const 13\n"
+                + "i32.lte\n"
+                + "set_global 0\n"
+                ), globals);
+        
+        e.run();
+        
+        assertEquals(0, globals[0]);
     }
 }

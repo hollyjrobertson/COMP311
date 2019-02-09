@@ -102,7 +102,13 @@ public class BinaryOperation implements Operation {
                 break;
                 
             case Lte:
-                return 0;
+                if (stack.pop() <= stack.pop()) {
+                    stack.push(1);
+                }
+                else {
+                    stack.push(0);
+                }
+                break;
                 
             case Gt:
                 if (stack.pop() > stack.pop()) {
