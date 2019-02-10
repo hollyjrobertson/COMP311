@@ -350,4 +350,27 @@ public class WAEngineTest {
         
         assertEquals(0, globals[0]);
     }
+    
+    /**
+     * Test from lab 1 write-up
+     */
+    @Test
+    public void testLabWriteUp() {
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
+                "i32.const 5\n"
+                + "i32.const 7\n"
+                + "i32.add\n"
+                + "set_global 0\n"
+                + "get_global 0\n"
+                + "i32.const 3\n"
+                + "i32.add\n"
+                + "set_global 1\n"
+                ), globals);
+        
+        e.run();
+        
+        assertEquals(12, globals[0]);
+        assertEquals(15, globals[1]);
+    }
 }

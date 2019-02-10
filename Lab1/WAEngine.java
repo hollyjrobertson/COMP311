@@ -16,7 +16,6 @@ public class WAEngine {
      */
     public WAEngine(Scanner program, int [] globals) {
         this.parseProgram = new ParseProgram(program, globals);
-        this.run();
     }
 
     /**

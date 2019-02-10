@@ -65,7 +65,8 @@ public class ParseProgram {
                 GetSetOperation setGlobal = 
                         new GetSetOperation(GetSetOperation.Type.Set);
 
-                counter = setGlobal.execute(counter, stack, globals);
+                setGlobal.execute(counter, stack, globals);
+                counter++;
             }
 
             if (currentLine.contains("get_global")) {
@@ -76,35 +77,40 @@ public class ParseProgram {
                 GetSetOperation getGlobal = 
                             new GetSetOperation(GetSetOperation.Type.Get);
 
-                counter = getGlobal.execute(counter, stack, globals);
+                getGlobal.execute(counter, stack, globals);
+                counter++;
             }
                 
             if (currentLine.contains("i32.add")) {
                 BinaryOperation add = 
                             new BinaryOperation(BinaryOperation.Type.Add);
                     
-                counter = add.execute(counter, stack, globals);
+                add.execute(counter, stack, globals);
+                counter++;
             }
                 
             if (currentLine.contains("i32.sub")) {
                 BinaryOperation sub = 
                         new BinaryOperation(BinaryOperation.Type.Sub);
         
-                counter = sub.execute(counter, stack, globals);
+                sub.execute(counter, stack, globals);
+                counter++;
             }
                 
             if (currentLine.contains("i32.mul")) {
                 BinaryOperation mul = 
                         new BinaryOperation(BinaryOperation.Type.Mul);
              
-                counter = mul.execute(counter, stack, globals);
+                mul.execute(counter, stack, globals);
+                counter++;
             }
                 
             if (currentLine.contains("i32.div")) {
                 BinaryOperation div =
                         new BinaryOperation(BinaryOperation.Type.Div);
                     
-                counter = div.execute(counter, stack, globals);
+                div.execute(counter, stack, globals);
+                counter++;
             }
                 
             if (currentLine.contains("i32.eq") &&
@@ -112,21 +118,24 @@ public class ParseProgram {
                 BinaryOperation eq = 
                         new BinaryOperation(BinaryOperation.Type.Eq);
                     
-                counter = eq.execute(counter, stack, globals);
+                eq.execute(counter, stack, globals);
+                counter++;
             }
                 
             if (currentLine.contains("i32.ne")) {
                 BinaryOperation ne = 
                         new BinaryOperation(BinaryOperation.Type.Ne);
                     
-                counter = ne.execute(counter, stack, globals);
+                ne.execute(counter, stack, globals);
+                counter++;
             }
                 
             if (currentLine.contains("i32.gte")) {
                 BinaryOperation gte = 
                             new BinaryOperation(BinaryOperation.Type.Gte);
                     
-                counter = gte.execute(counter, stack, globals);
+                gte.execute(counter, stack, globals);
+                counter++;
             }
                 
             if (currentLine.contains("i32.gt") &&
@@ -134,14 +143,16 @@ public class ParseProgram {
                 BinaryOperation gt = 
                         new BinaryOperation(BinaryOperation.Type.Gt);
                    
-                counter = gt.execute(counter, stack, globals);
+                gt.execute(counter, stack, globals);
+                counter++;
             }
                 
             if (currentLine.contains("i32.lte")) {
                 BinaryOperation lte = 
                             new BinaryOperation(BinaryOperation.Type.Lte);
                     
-                counter = lte.execute(counter, stack, globals);
+                lte.execute(counter, stack, globals);
+                counter++;
             }
                 
             if (currentLine.contains("i32.lt") && 
@@ -149,7 +160,8 @@ public class ParseProgram {
                 BinaryOperation lt = 
                             new BinaryOperation(BinaryOperation.Type.Lt);
                     
-                counter = lt.execute(counter, stack, globals);
+                lt.execute(counter, stack, globals);
+                counter++;
             }
         }
         return globals;
