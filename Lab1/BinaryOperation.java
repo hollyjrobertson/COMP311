@@ -37,10 +37,10 @@ public class BinaryOperation implements Operation {
     }
 
     private Type type;
-    
+
     /**
-     * Constructor method that sets type for object
-     * @param type either Get or Set
+     * Binary Operation type
+     * @param type of Operation
      */
     public BinaryOperation(Type type) {
         this.type = type;
@@ -56,7 +56,7 @@ public class BinaryOperation implements Operation {
     @Override
     public int execute(int programCounter, Stack<Integer> stack,
             int[] globals) {
-        
+
         switch(type) {
             case Add:
                 stack.push(stack.pop() + stack.pop());
@@ -73,7 +73,7 @@ public class BinaryOperation implements Operation {
             case Div:
                 stack.push(stack.pop() / stack.pop());
                 break;
-                
+
             case Eq:
                 if (stack.pop() == stack.pop()) {
                     stack.push(1);

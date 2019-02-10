@@ -23,6 +23,6 @@ public class WAEngine {
      * Executable method that runs the code and sets value
      */
     public void run() {
-        parseProgram.execute();
+        parseProgram.run();
     }
 }

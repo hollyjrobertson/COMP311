@@ -1,48 +1,24 @@
 import static org.junit.Assert.*;
 import java.util.Scanner;
-import org.junit.*;
+import org.junit.Test;
 
 /**
- * Test class for WAEngine
- * 
+ * Main Test method for class
  * @author Holly Robertson
  * @version 1.0
  */
 public class WAEngineTest {
-    /***
-     * Object from WAEngine
-     */
-    WAEngine e;
-    
+
     /**
-     * Global variable globals
-     */
-    int[] globals;
-    
-    /**
-     * Sets up the test fixture
-     * (Called before every test case method.)
-     */
-    @Before
-    public void setUp() throws Exception {
-        globals = new int[2];
-    }
-    
-    /**
-     * Tears down the test fixture
-     * (Called after every test case method.)
-     */
-    @After
-    public void tearDown() throws Exception {
-        globals = null;
-    }
-    
-    /**
-     * Test method for set_global
+     * Test class for WAEngine
+     * 
+     * @author Holly Robertson
+     * @version 1.0
      */
     @Test
-    public void testSet() {
-        e = new WAEngine(new Scanner(
+    public void testConst() {
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 42\n"
                 + "set_global 0\n"
                 ), globals);
@@ -51,15 +27,8 @@ public class WAEngineTest {
 
         assertEquals(42, globals[0]);
 
-    }
-    
-    /**
-     * Test method for multiple variables
-     */
-    @Test
-    public void testTwoGlobal() {
         e = new WAEngine(new Scanner(
-               "i32.const 12\n"
+                "i32.const 12\n"
                 + "i32.const 23\n"
                 + "set_global 0\n"
                 + "set_global 1\n"
@@ -69,7 +38,6 @@ public class WAEngineTest {
 
         assertEquals(23, globals[0]);
         assertEquals(12, globals[1]);
-        
     }
     
     /**
@@ -77,7 +45,8 @@ public class WAEngineTest {
      */
     @Test
     public void testGetGlobal() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 42\n"
                 + "set_global 0\n"
                 + "get_global 0\n"
@@ -93,7 +62,8 @@ public class WAEngineTest {
      */
     @Test
     public void testAdd() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 12\n"
                 + "i32.const 23\n"
                 + "i32.add\n"
@@ -111,7 +81,8 @@ public class WAEngineTest {
      */
     @Test
     public void testSub() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 12\n"
                 + "i32.const 23\n"
                 + "i32.sub\n"
@@ -129,7 +100,8 @@ public class WAEngineTest {
      */
     @Test
     public void testMul() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 2\n"
                 + "i32.const 3\n"
                 + "i32.mul\n"
@@ -147,7 +119,8 @@ public class WAEngineTest {
      */
     @Test
     public void testDiv() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 3\n"
                 + "i32.const 12\n"
                 + "i32.div\n"
@@ -165,7 +138,8 @@ public class WAEngineTest {
      */
     @Test
     public void testEqTrue() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 12\n"
                 + "i32.const 12\n"
                 + "i32.eq\n"
@@ -183,7 +157,8 @@ public class WAEngineTest {
      */
     @Test
     public void testEqFalse() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 13\n"
                 + "i32.const 12\n"
                 + "i32.eq\n"
@@ -201,7 +176,8 @@ public class WAEngineTest {
      */
     @Test
     public void testNeTrue() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 12\n"
                 + "i32.const 13\n"
                 + "i32.ne\n"
@@ -218,7 +194,8 @@ public class WAEngineTest {
      */
     @Test
     public void testNeFalse() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 12\n"
                 + "i32.const 12\n"
                 + "i32.ne\n"
@@ -235,7 +212,8 @@ public class WAEngineTest {
      */
     @Test
     public void testGtTrue() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 12\n"
                 + "i32.const 13\n"
                 + "i32.gt\n"
@@ -252,7 +230,8 @@ public class WAEngineTest {
      */
     @Test
     public void testGtFalse() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 13\n"
                 + "i32.const 12\n"
                 + "i32.gt\n"
@@ -269,7 +248,8 @@ public class WAEngineTest {
      */
     @Test
     public void testGteTrue() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 12\n"
                 + "i32.const 12\n"
                 + "i32.gte\n"
@@ -286,12 +266,17 @@ public class WAEngineTest {
      */
     @Test 
     public void testGteFalse() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 13\n"
                 + "i32.const 2\n"
                 + "i32.gte\n"
                 + "set_global 0\n"
                 ), globals);
+        
+        e.run();
+        
+        assertEquals(0, globals[0]);
     }
     
     /**
@@ -299,7 +284,8 @@ public class WAEngineTest {
      */
     @Test
     public void testLtTrue() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 13\n"
                 + "i32.const 12\n"
                 + "i32.lt\n"
@@ -316,7 +302,8 @@ public class WAEngineTest {
      */
     @Test 
     public void testLtFalse() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 12\n"
                 + "i32.const 13\n"
                 + "i32.lt\n"
@@ -333,7 +320,8 @@ public class WAEngineTest {
      */
     @Test
     public void testLteTrue() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 12\n"
                 + "i32.const 12\n"
                 + "i32.lte\n"
@@ -350,7 +338,8 @@ public class WAEngineTest {
      */
     @Test
     public void testLteFalse() {
-        e = new WAEngine(new Scanner(
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
                 "i32.const 12\n"
                 + "i32.const 13\n"
                 + "i32.lte\n"

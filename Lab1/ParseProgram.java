@@ -12,24 +12,24 @@ public class ParseProgram {
     private List<String> program;
     private Stack<Integer> stack = new Stack<>();
 
-    /**
-     * Constructor method
-     * 
-     * @param str     of code
-     * @param globals that keep track
-     */
+        /**
+         * Constructor method
+         * 
+         * @param str     of code
+         * @param globals that keep track
+         */
     public ParseProgram(Scanner str, int[] globals) {
         this.counter = 0;
         this.globals = globals;
         this.program = parseProgram(str);
     }
 
-    /**
-     * Program that parses the and adds each line to ArrayList
-     * 
-     * @param str of code
-     * @return an ArrayList of each line at each index
-     */
+        /**
+         * Program that parses the and adds each line to ArrayList
+         * 
+         * @param str of code
+         * @return an ArrayList of each line at each index
+         */
     private List<String> parseProgram(Scanner str) {
         List<String> prog = new ArrayList<>();
 
@@ -39,12 +39,13 @@ public class ParseProgram {
         return prog;
     }
 
-    /**
-     * Executable method that parses and sets the operation class for each line
-     * 
-     * @return the counter
-     */
-    public int[] execute() {
+        /**
+         * Executable method that parses and sets the operation
+         * class for each line
+         * 
+         * @return the counter
+         */
+    public int[] run() {
         while (counter < program.size()) {
             String currentLine = program.get(counter);
 
@@ -62,7 +63,7 @@ public class ParseProgram {
                 stack.push(intValue);
 
                 GetSetOperation setGlobal = 
-                    new GetSetOperation(GetSetOperation.Type.Set);
+                        new GetSetOperation(GetSetOperation.Type.Set);
 
                 counter = setGlobal.execute(counter, stack, globals);
             }
@@ -73,84 +74,85 @@ public class ParseProgram {
                 stack.push(intValue);
 
                 GetSetOperation getGlobal = 
-                        new GetSetOperation(GetSetOperation.Type.Get);
+                            new GetSetOperation(GetSetOperation.Type.Get);
 
                 counter = getGlobal.execute(counter, stack, globals);
             }
-            
+                
             if (currentLine.contains("i32.add")) {
                 BinaryOperation add = 
-                        new BinaryOperation(BinaryOperation.Type.Add);
-                
+                            new BinaryOperation(BinaryOperation.Type.Add);
+                    
                 counter = add.execute(counter, stack, globals);
             }
-            
+                
             if (currentLine.contains("i32.sub")) {
                 BinaryOperation sub = 
-                    new BinaryOperation(BinaryOperation.Type.Sub);
-    
+                        new BinaryOperation(BinaryOperation.Type.Sub);
+        
                 counter = sub.execute(counter, stack, globals);
             }
-            
+                
             if (currentLine.contains("i32.mul")) {
                 BinaryOperation mul = 
-                    new BinaryOperation(BinaryOperation.Type.Mul);
-         
+                        new BinaryOperation(BinaryOperation.Type.Mul);
+             
                 counter = mul.execute(counter, stack, globals);
             }
-            
+                
             if (currentLine.contains("i32.div")) {
                 BinaryOperation div =
-                    new BinaryOperation(BinaryOperation.Type.Div);
-                
+                        new BinaryOperation(BinaryOperation.Type.Div);
+                    
                 counter = div.execute(counter, stack, globals);
             }
-            
-            if (currentLine.contains("i32.eq") &&
-                    (!currentLine.contains("i32.eqz"))) {
-                BinaryOperation eq = 
-                    new BinaryOperation(BinaryOperation.Type.Eq);
                 
+            if (currentLine.contains("i32.eq") &&
+                        (!currentLine.contains("i32.eqz"))) {
+                BinaryOperation eq = 
+                        new BinaryOperation(BinaryOperation.Type.Eq);
+                    
                 counter = eq.execute(counter, stack, globals);
             }
-            
+                
             if (currentLine.contains("i32.ne")) {
                 BinaryOperation ne = 
-                    new BinaryOperation(BinaryOperation.Type.Ne);
-                
+                        new BinaryOperation(BinaryOperation.Type.Ne);
+                    
                 counter = ne.execute(counter, stack, globals);
             }
-            
+                
             if (currentLine.contains("i32.gte")) {
                 BinaryOperation gte = 
-                        new BinaryOperation(BinaryOperation.Type.Gte);
-                
+                            new BinaryOperation(BinaryOperation.Type.Gte);
+                    
                 counter = gte.execute(counter, stack, globals);
             }
-            
+                
             if (currentLine.contains("i32.gt") &&
-                    (!currentLine.contains("i32.gte"))) {
+                        (!currentLine.contains("i32.gte"))) {
                 BinaryOperation gt = 
-                    new BinaryOperation(BinaryOperation.Type.Gt);
-               
+                        new BinaryOperation(BinaryOperation.Type.Gt);
+                   
                 counter = gt.execute(counter, stack, globals);
             }
-            
+                
             if (currentLine.contains("i32.lte")) {
                 BinaryOperation lte = 
-                        new BinaryOperation(BinaryOperation.Type.Lte);
-                
+                            new BinaryOperation(BinaryOperation.Type.Lte);
+                    
                 counter = lte.execute(counter, stack, globals);
             }
-            
-            if (currentLine.contains("i32.lt") && 
-                    (!currentLine.contains("i32.lte"))) {
-                BinaryOperation lt = 
-                        new BinaryOperation(BinaryOperation.Type.Lt);
                 
+            if (currentLine.contains("i32.lt") && 
+                        (!currentLine.contains("i32.lte"))) {
+                BinaryOperation lt = 
+                            new BinaryOperation(BinaryOperation.Type.Lt);
+                    
                 counter = lt.execute(counter, stack, globals);
             }
         }
         return globals;
     }
 }
+

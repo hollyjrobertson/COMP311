@@ -7,7 +7,7 @@ import java.util.*;
  * @version 1.0
  */
 public class GetSetOperation implements Operation {
-    /**
+     /**
      * Get / Set enum types
      * 
      * @author Holly Robertson
@@ -52,3 +52,4 @@ public class GetSetOperation implements Operation {
     }
 
 }
+
