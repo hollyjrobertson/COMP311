@@ -7,6 +7,7 @@ import java.util.*;
  * @version 1.0
  */
 public class GetSetOperation implements Operation {
+    
      /**
      * Get / Set enum types
      * 
@@ -32,9 +33,9 @@ public class GetSetOperation implements Operation {
     /**
      * Overrides the execute method from Operation interface
      * @param programCounter of program
-     * @param stack the stack
-     * @param globals array
-     * @returns programCounter - the next line in the program
+     * @param stack is what keeps track of the numbers 
+     * @param globals is the assigned variables
+     * @return programCounter - the next line in the program
      */
     @Override
     public int execute(int programCounter, Stack<Integer> stack, int[] globals)
@@ -44,7 +45,10 @@ public class GetSetOperation implements Operation {
                 stack.push(globals[stack.pop()]);
                 break;
             case Set:
-                globals[stack.pop()] = stack.pop(); //push(index), push value
+                globals[stack.pop()] = stack.pop(); 
+                //push(index), push value
+                break;
+            default: 
                 break;
         }
         

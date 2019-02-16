@@ -24,6 +24,8 @@ public class BinaryOperation implements Operation {
         Div,
         /** Eq */
         Eq,
+        /** Eqz */
+        Eqz,
         /** Ne */
         Ne,
         /** Lt */
@@ -49,9 +51,9 @@ public class BinaryOperation implements Operation {
     /**
      * Overrides the execute method from Operation interface
      * @param programCounter of program
-     * @param stack the stack
-     * @param globals array
-     * @returns programCounter - the next line in the program
+     * @param stack is what keeps track of the numbers 
+     * @param globals is the assigned variables
+     * @return programCounter - the next line in the program
      */
     @Override
     public int execute(int programCounter, Stack<Integer> stack,
@@ -63,7 +65,8 @@ public class BinaryOperation implements Operation {
                 break;
                 
             case Sub:
-                stack.push(stack.pop() - stack.pop());
+                int temp0 = stack.pop();
+                stack.push(stack.pop() - temp0);
                 break;
                 
             case Mul:
@@ -71,11 +74,21 @@ public class BinaryOperation implements Operation {
                 break;
                 
             case Div:
-                stack.push(stack.pop() / stack.pop());
+                int temp = stack.pop();
+                stack.push(stack.pop() / temp);
                 break;
 
             case Eq:
                 if (stack.pop() == stack.pop()) {
+                    stack.push(1);
+                }
+                else {
+                    stack.push(0);
+                }
+                break;
+                
+            case Eqz:
+                if (stack.pop() == 0) {
                     stack.push(1);
                 }
                 else {
@@ -93,7 +106,8 @@ public class BinaryOperation implements Operation {
                 break;
                 
             case Lt:
-                if (stack.pop() < stack.pop()) {
+                int temp2 = stack.pop();
+                if (stack.pop() < temp2) {
                     stack.push(1);
                 }
                 else {
@@ -102,7 +116,8 @@ public class BinaryOperation implements Operation {
                 break;
                 
             case Lte:
-                if (stack.pop() <= stack.pop()) {
+                int temp3 = stack.pop();
+                if (stack.pop() <= temp3) {
                     stack.push(1);
                 }
                 else {
@@ -111,7 +126,8 @@ public class BinaryOperation implements Operation {
                 break;
                 
             case Gt:
-                if (stack.pop() > stack.pop()) {
+                int temp4 = stack.pop();
+                if (stack.pop() > temp4) {
                     stack.push(1);
                 }
                 else {
@@ -120,12 +136,19 @@ public class BinaryOperation implements Operation {
                 break;
                 
             case Gte: 
-                if (stack.pop() >= stack.pop()) {
+                int temp5 = stack.pop();
+                if (stack.pop() >= temp5) {
                     stack.push(1);
                 }
                 else {
                     stack.push(0);
                 }
+                break;
+                
+            /**
+             * Does nothing but satisty WebCat
+             */
+            default:
                 break;
         }
 

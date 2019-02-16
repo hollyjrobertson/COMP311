@@ -17,11 +17,11 @@ public class WAEngineTest {
      */
     @Test
     public void testConst() {
-        int [] globals = new int[2];
+        int [] globals = new int[3];
         WAEngine e = new WAEngine(new Scanner(
                 "i32.const 42\n"
                 + "set_global 0\n"
-                ), globals);
+        ), globals);
 
         e.run();
 
@@ -32,7 +32,7 @@ public class WAEngineTest {
                 + "i32.const 23\n"
                 + "set_global 0\n"
                 + "set_global 1\n"
-                ), globals);
+        ), globals);
 
         e.run();
 
@@ -50,7 +50,7 @@ public class WAEngineTest {
                 "i32.const 42\n"
                 + "set_global 0\n"
                 + "get_global 0\n"
-                ), globals);
+        ), globals);
         
         e.run();
         
@@ -69,7 +69,7 @@ public class WAEngineTest {
                 + "i32.add\n"
                 + "set_global 0\n"
                 + "get_global 0\n"
-                ), globals);
+        ), globals);
         
         e.run();
        
@@ -83,12 +83,12 @@ public class WAEngineTest {
     public void testSub() {
         int [] globals = new int[2];
         WAEngine e = new WAEngine(new Scanner(
-                "i32.const 12\n"
-                + "i32.const 23\n"
+                "i32.const 23\n"
+                + "i32.const 12\n"
                 + "i32.sub\n"
                 + "set_global 0\n"
                 + "get_global 0\n"
-                ), globals);
+        ), globals);
         
         e.run();
         
@@ -107,7 +107,7 @@ public class WAEngineTest {
                 + "i32.mul\n"
                 + "set_global 0\n"
                 + "get_global 0\n"
-                ), globals);
+        ), globals);
      
         e.run();
         
@@ -121,12 +121,12 @@ public class WAEngineTest {
     public void testDiv() {
         int [] globals = new int[2];
         WAEngine e = new WAEngine(new Scanner(
-                "i32.const 3\n"
-                + "i32.const 12\n"
+                "i32.const 12\n"
+                + "i32.const 3\n"
                 + "i32.div\n"
                 + "set_global 0\n"
                 + "get_global 0\n"
-                ), globals);
+        ), globals);
         
         e.run();
         
@@ -144,7 +144,7 @@ public class WAEngineTest {
                 + "i32.const 12\n"
                 + "i32.eq\n"
                 + "set_global 0\n"
-                ), globals);
+        ), globals);
      
         
         e.run();
@@ -163,8 +163,42 @@ public class WAEngineTest {
                 + "i32.const 12\n"
                 + "i32.eq\n"
                 + "set_global 0\n"
-                ), globals);
+        ), globals);
      
+        
+        e.run();
+        
+        assertEquals(0, globals[0]);
+    }
+    
+    /**
+     * Test method for eqz that's true
+     */
+    @Test
+    public void testEqzTrue() {
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
+                "i32.const 0\n"
+                + "i32.eqz\n"
+                + "set_global 0\n"
+        ), globals);
+        
+        e.run();
+        
+        assertEquals(1, globals[0]);
+    }
+    
+    /**
+     * Test methode for eqz that's false
+     */
+    @Test
+    public void testEqzFalse() {
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
+                "i32.const 1\n"
+                + "i32.eqz\n"
+                + "set_global 0\n"
+        ), globals);
         
         e.run();
         
@@ -182,7 +216,7 @@ public class WAEngineTest {
                 + "i32.const 13\n"
                 + "i32.ne\n"
                 + "set_global 0\n"
-                ), globals);
+        ), globals);
         
         e.run();
         
@@ -200,7 +234,7 @@ public class WAEngineTest {
                 + "i32.const 12\n"
                 + "i32.ne\n"
                 + "set_global 0\n"
-                ), globals);
+        ), globals);
         
         e.run();
         
@@ -214,11 +248,11 @@ public class WAEngineTest {
     public void testGtTrue() {
         int [] globals = new int[2];
         WAEngine e = new WAEngine(new Scanner(
-                "i32.const 12\n"
-                + "i32.const 13\n"
+                "i32.const 13\n"
+                + "i32.const 12\n"
                 + "i32.gt\n"
                 + "set_global 0\n"
-                ), globals);
+        ), globals);
         
         e.run();
         
@@ -232,11 +266,11 @@ public class WAEngineTest {
     public void testGtFalse() {
         int [] globals = new int[2];
         WAEngine e = new WAEngine(new Scanner(
-                "i32.const 13\n"
-                + "i32.const 12\n"
+                "i32.const 12\n"
+                + "i32.const 13\n"
                 + "i32.gt\n"
                 + "set_global 0\n"
-                ), globals);
+        ), globals);
         
         e.run();
         
@@ -254,7 +288,7 @@ public class WAEngineTest {
                 + "i32.const 12\n"
                 + "i32.gte\n"
                 + "set_global 0\n"
-                ), globals);
+        ), globals);
         
         e.run();
         
@@ -268,11 +302,11 @@ public class WAEngineTest {
     public void testGteFalse() {
         int [] globals = new int[2];
         WAEngine e = new WAEngine(new Scanner(
-                "i32.const 13\n"
-                + "i32.const 2\n"
+                "i32.const 2\n"
+                + "i32.const 13\n"
                 + "i32.gte\n"
                 + "set_global 0\n"
-                ), globals);
+        ), globals);
         
         e.run();
         
@@ -286,11 +320,11 @@ public class WAEngineTest {
     public void testLtTrue() {
         int [] globals = new int[2];
         WAEngine e = new WAEngine(new Scanner(
-                "i32.const 13\n"
-                + "i32.const 12\n"
+                "i32.const 12\n"
+                + "i32.const 13\n"
                 + "i32.lt\n"
                 + "set_global 0\n"
-                ), globals);
+        ), globals);
         
         e.run();
         
@@ -304,11 +338,11 @@ public class WAEngineTest {
     public void testLtFalse() {
         int [] globals = new int[2];
         WAEngine e = new WAEngine(new Scanner(
-                "i32.const 12\n"
-                + "i32.const 13\n"
+                "i32.const 13\n"
+                + "i32.const 12\n"
                 + "i32.lt\n"
                 + "set_global 0\n"
-                ), globals);
+        ), globals);
         
         e.run();
         
@@ -326,7 +360,7 @@ public class WAEngineTest {
                 + "i32.const 12\n"
                 + "i32.lte\n"
                 + "set_global 0\n"
-                ), globals);
+        ), globals);
         
         e.run();
         
@@ -340,11 +374,85 @@ public class WAEngineTest {
     public void testLteFalse() {
         int [] globals = new int[2];
         WAEngine e = new WAEngine(new Scanner(
-                "i32.const 12\n"
-                + "i32.const 13\n"
+                "i32.const 13\n"
+                + "i32.const 12\n"
                 + "i32.lte\n"
                 + "set_global 0\n"
-                ), globals);
+        ), globals);
+        
+        e.run();
+        
+        assertEquals(0, globals[0]);
+    }
+    
+    /**
+     * Test for break method
+     */
+    @Test
+    public void testBr() {
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
+                "i32.const 12\n"
+                + "br dest\n"
+                + "i32.const \n"
+                + "set_global 0\n"
+                + "dest: i32.const 3\n"
+                + "set_global 0\n"
+        ), globals);
+        
+        e.run();
+        
+        assertEquals(3, globals[0]);
+    }
+    
+    /**
+     * Test for break if method that branches
+     */
+    @Test
+    public void testBrIf() {
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
+                "i32.const 1\n"
+                + "br_if dest2\n"
+                + "i32.const 12\n"
+                + "set_global 0\n"
+                + "dest2: i32.const 3\n"
+                + "set_global 0\n"
+        ), globals);
+        
+        e.run();
+        
+        assertEquals(3, globals[0]);
+    }
+    
+    /**
+     * Test for break if method that branches
+     */
+    @Test
+    public void testBrIfNo() {
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
+                "i32.const 0\n"
+                + "br_if dest2\n"
+                + "i32.const 12\n"
+                + "set_global 0\n"
+        ), globals);
+        
+        e.run();
+        
+        assertEquals(12, globals[0]);
+    }
+    
+    /**
+     * Test for nop
+     */
+    @Test
+    public void testNop() {
+        int [] globals = new int[2];
+        WAEngine e = new WAEngine(new Scanner(
+                "i32.const 0\n"
+                + "nop\n"
+        ), globals);
         
         e.run();
         
@@ -366,11 +474,35 @@ public class WAEngineTest {
                 + "i32.const 3\n"
                 + "i32.add\n"
                 + "set_global 1\n"
-                ), globals);
+        ), globals);
         
         e.run();
         
         assertEquals(12, globals[0]);
         assertEquals(15, globals[1]);
     }
+    
+    /** 
+     * Test from Tim
+     */
+    @Test 
+    public void testTimTest() {
+        int [] globals = new int[3];
+        WAEngine e = new WAEngine(new Scanner(
+                "i32.const 0\n"
+                + "br_if dest\n"
+                + "i32.const 1\n"
+                + "set_global 0\n"
+                + "dest: i32.const 1\n"
+                + "br_if dest2\n"
+                + "i32.const 1\n"
+                + "set_global 1\n"
+                + "dest2: i32.const 1\n"
+                + "set_global 2\n"
+        ), globals);
+        
+        e.run(); 
+        
+        assertEquals(1, globals[2]);
+    }    
 }
