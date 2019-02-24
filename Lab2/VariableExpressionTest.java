@@ -71,7 +71,7 @@ public class VariableExpressionTest {
     @Test
     public void testAccept() {
         var.accept(v);
-        String result = "get_global " + var.getIndex();
+        String result = "(get_global 0)";
         
         assertEquals(result, v.getString());
     }

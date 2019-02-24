@@ -17,9 +17,8 @@ public class AbstractVisitorTest
     protected VariableExpression varEx;
     /** Simple BinaryExpression. */
     protected BinaryExpression simpleBinaryEx;
-
-    //  TODO: Add more expressions and statements here for the
-    //  subclasses to use
+    /** Assign Statement **/
+    protected AssignStatement assign;
 
     /** Set up tests. */
     @Before
@@ -33,8 +32,8 @@ public class AbstractVisitorTest
                 varEx,
                 Operator.ADD,
                 constEx);
-
-        //  TODO: initialize other expressions and statements
+        assign = 
+            new AssignStatement(varEx, simpleBinaryEx);
     }
 
     /** Keep WebCAT happy */

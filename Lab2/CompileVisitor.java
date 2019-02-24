@@ -35,6 +35,7 @@ public class CompileVisitor implements Visitor
      */
     @Override
     public void preVisit(BinaryExpression expr) {
+        sb.append("");
     }
 
     /**
@@ -43,6 +44,7 @@ public class CompileVisitor implements Visitor
      */
     @Override
     public void visit(BinaryExpression expr) {
+        sb.append("");
     }
 
     /**
@@ -60,6 +62,7 @@ public class CompileVisitor implements Visitor
      */
     @Override
     public void preVisit(AssignStatement stmt) {
+        sb.append("get_global " + stmt.getVariable().getIndex() + "\n");
     }
 
     /**
@@ -68,6 +71,7 @@ public class CompileVisitor implements Visitor
      */
     @Override
     public void postVisit(AssignStatement stmt) {
+        sb.append("set_global " + stmt.getVariable().getIndex() + "\n");
     }
 
     /**
@@ -76,6 +80,7 @@ public class CompileVisitor implements Visitor
      */
     @Override
     public void preVisit(DoWhileStatement stmt) {
+        sb.append("while0: nop\n");
     }
 
     /**
@@ -84,6 +89,9 @@ public class CompileVisitor implements Visitor
      */
     @Override
     public void postBodyVisit(DoWhileStatement stmt) {
+        /**
+         * Here to make WebCat happy
+         */
     }
 
     /**
@@ -92,6 +100,7 @@ public class CompileVisitor implements Visitor
      */
     @Override
     public void postVisit(DoWhileStatement stmt) {
+        sb.append("br_if while0\n");
     }
 
     /**

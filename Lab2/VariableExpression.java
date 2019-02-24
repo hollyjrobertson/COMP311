@@ -18,7 +18,7 @@ public class VariableExpression extends AbstractExpression
     }
 
     /**
-     * Returns the index passed into the constuctor
+     * Returns the index passed into the constructor
      * @return index of object
      */
     public int getIndex()
@@ -36,6 +36,7 @@ public class VariableExpression extends AbstractExpression
 
     /**
      * Accept method that takes visitor
+     * @param vis is the passing visitor
      */
     @Override
     public void accept(Visitor vis) {

@@ -7,12 +7,27 @@
 public class IfStatement extends AbstractStatement
 {
     /**
+     * Global object for aCondition
+     */
+    AbstractExpression aCondition;
+    /**
+     * Global object for aThenBlock
+     */
+    AbstractStatement aThenBlock;
+    /**
+     * Abstract Statement for anElseBlock
+     */
+    AbstractStatement anElseBlock;
+    
+    /**
      * Constructor
      * @param aCondition AbstractExpression
      * @param aThenBlock AbstractExpression
      */
     public IfStatement(AbstractExpression aCondition,
         AbstractStatement aThenBlock) {
+        this.aCondition = aCondition;
+        this.aThenBlock = aThenBlock;
     }
 
     /**
@@ -23,6 +38,9 @@ public class IfStatement extends AbstractStatement
      */
     public IfStatement(AbstractExpression aCondition,
         AbstractStatement aThenBlock, AbstractStatement anElseBlock) {
+        this.aCondition = aCondition;
+        this.aThenBlock = aThenBlock;
+        this.anElseBlock = anElseBlock;
     }
 
     /**
@@ -30,7 +48,7 @@ public class IfStatement extends AbstractStatement
      * @return AbstractStatement
      */
     public AbstractStatement getElseBlock() {
-        return null;
+        return anElseBlock;
     }
 
     /**
@@ -38,5 +56,14 @@ public class IfStatement extends AbstractStatement
      */
     @Override
     public void accept(Visitor vis) {
+        vis.preVisit(this);
+        aCondition.accept(vis);
+        vis.preThenVisit(this);
+        aThenBlock.accept(vis);
+        if (getElseBlock() != null) {
+            vis.preElseVisit(this);
+            anElseBlock.accept(vis);
+        }
+        vis.postVisit(this);
     }
 }

@@ -7,11 +7,22 @@
 public class AssignStatement extends AbstractStatement
 {
     /**
+     * Global object for aVar
+     */
+    VariableExpression aVar;
+    /**
+     * Global object for aValue
+     */
+    AbstractExpression aValue;
+    
+    /**
      * Constructor
      * @param aVar variable expression
      * @param aValue abstract expression
      */
     public AssignStatement(VariableExpression aVar, AbstractExpression aValue) {
+        this.aVar = aVar;
+        this.aValue = aValue;
     }
 
     /**
@@ -19,13 +30,28 @@ public class AssignStatement extends AbstractStatement
      * @return aVar expression
      */
     public VariableExpression getVariable() {
-        return null;
+        return aVar;
     }
 
     /**
      * Accepts visitor to traverse
+     * @param vis - Visitor to traverse
      */
     @Override
     public void accept(Visitor vis) {
+        if (vis instanceof WATextVisitor) {
+            vis.preVisit(this);
+            aValue.accept(vis);
+            vis.postVisit(this);
+        } 
+        else if (vis instanceof JavaVisitor) {
+            vis.preVisit(this); 
+            aValue.accept(vis);
+            vis.postVisit(this);
+        } 
+        else {
+            aValue.accept(vis);
+            vis.postVisit(this);
+        }
     }
 }

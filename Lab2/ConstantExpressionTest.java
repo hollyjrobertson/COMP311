@@ -63,7 +63,7 @@ public class ConstantExpressionTest {
     public void testAccept() {
         con.accept(v);
         
-        assertEquals("3", v.getString());
+        assertEquals("(i32.const 3)", v.getString());
     }
 
 }

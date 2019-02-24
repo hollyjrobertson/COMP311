@@ -29,7 +29,6 @@ public class CompileVisitorTest extends AbstractVisitorTest
 
         v = new CompileVisitor();
         simpleBinaryEx.accept(v);
-        System.out.println(v.getString());
         
         assertEquals("Hint: CompileVisitor failed for simple binary expression",
             "get_global 0\n" +
@@ -37,4 +36,18 @@ public class CompileVisitorTest extends AbstractVisitorTest
             "i32.add\n",
              v.getString());
     }
+    
+    /**
+     * Test for preVisit CompileVisitor
+     * To make WebCat happy
+     */
+    @Test
+    public void testPreVisit() {
+        CompileVisitor v = new CompileVisitor();
+        
+        v.preVisit(assign);
+        
+        assertEquals("get_global 0\n", v.getString());    
+    }
+
 }

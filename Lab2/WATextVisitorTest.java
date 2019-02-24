@@ -8,26 +8,21 @@ import org.junit.Test;
  * @author Tim
  * @version 1.0
  */
-public class WATextVisitorTest extends AbstractVisitorTest
-{
+public class WATextVisitorTest extends AbstractVisitorTest {
     /** Test simple expressions. */
     @Test
-    public void testSimpleExpressions()
-    {
-        //  The expressions we're testing are defined in AbstractVisitorTest
+    public void testSimpleExpressions() {
+        // The expressions we're testing are defined in AbstractVisitorTest
         WATextVisitor v = new WATextVisitor();
         constEx.accept(v);
-        assertEquals("Hint: PrintVisitor failed for const expression",
-            "(i32.const 5)", v.getString());
+        assertEquals("(i32.const 5)", v.getString());
 
         v = new WATextVisitor();
         varEx.accept(v);
-        assertEquals("Hint: PrintVisitor failed for variable expression",
-            "(get_global 0)", v.getString());
+        assertEquals("(get_global 0)", v.getString());
 
         v = new WATextVisitor();
         simpleBinaryEx.accept(v);
-        assertEquals("Hint: PrintVisitor failed for simple binary expression",
-            "(i32.add (get_global 0) (i32.const 5))", v.getString());
+        assertEquals("(i32.add (get_global 0) (i32.const 5))", v.getString());
     }
 }

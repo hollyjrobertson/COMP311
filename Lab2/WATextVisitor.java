@@ -10,6 +10,14 @@ public class WATextVisitor implements Visitor
      * Global Variable for StringBuffer
      */
     StringBuffer sb = new StringBuffer();
+    /**
+     * Global variable for doWhile indentation 
+     */
+    int whileIdent = 0;
+    /**
+     * Global variable for if indentation
+     */
+    int ifIdent = 0;
     
     /**
      * Visit ConstantExpression method
@@ -17,7 +25,8 @@ public class WATextVisitor implements Visitor
      */
     @Override
     public void visit(ConstantExpression expr) {
-        sb.append(" (i32.const " + expr.getValue() + ")");
+        checkForParenthesis();
+        sb.append("(i32.const " + expr.getValue() + ")");
     }
 
     /**
@@ -26,6 +35,7 @@ public class WATextVisitor implements Visitor
      */
     @Override
     public void visit(VariableExpression expr) {
+        checkForParenthesis();
         sb.append("(get_global " + expr.getIndex() + ")");
     }
 
@@ -62,6 +72,7 @@ public class WATextVisitor implements Visitor
      */
     @Override
     public void preVisit(AssignStatement stmt) {
+        sb.append("(set_global " + stmt.getVariable().getIndex() + " ");
     }
 
     /**
@@ -70,6 +81,7 @@ public class WATextVisitor implements Visitor
      */
     @Override
     public void postVisit(AssignStatement stmt) {
+        sb.append(")\n");
     }
 
     /**
@@ -78,6 +90,12 @@ public class WATextVisitor implements Visitor
      */
     @Override
     public void preVisit(DoWhileStatement stmt) {
+        sb.append("(loop\n");
+        whileIdent += 2;
+        
+        for (int i = 0; i < whileIdent; i++) {
+            sb.append(" ");
+        }
     }
 
     /**
@@ -86,6 +104,8 @@ public class WATextVisitor implements Visitor
      */
     @Override
     public void postBodyVisit(DoWhileStatement stmt) {
+        sb.append("(br_if ");
+        whileIdent -= 2;
     }
 
     /**
@@ -94,6 +114,7 @@ public class WATextVisitor implements Visitor
      */
     @Override
     public void postVisit(DoWhileStatement stmt) {
+        sb.append("))\n");
     }
 
     /**
@@ -102,6 +123,8 @@ public class WATextVisitor implements Visitor
      */
     @Override
     public void preVisit(IfStatement stmt) {
+        sb.append("(if ");
+        ifIdent += 2;
     }
 
     /**
@@ -110,6 +133,12 @@ public class WATextVisitor implements Visitor
      */
     @Override
     public void preThenVisit(IfStatement stmt) {
+        sb.append("\n");
+        spacing();
+        sb.append("(then\n");
+        ifIdent += 2;
+        spacing();
+        ifIdent -= 2;
     }
 
     /**
@@ -118,6 +147,13 @@ public class WATextVisitor implements Visitor
      */
     @Override
     public void preElseVisit(IfStatement stmt) {
+        spacing();
+        sb.append(")\n");
+        spacing();
+        sb.append("(else\n");
+        ifIdent += 2;
+        spacing();
+        ifIdent -= 2;
     }
 
     /**
@@ -126,8 +162,32 @@ public class WATextVisitor implements Visitor
      */
     @Override
     public void postVisit(IfStatement stmt) {
+
+        spacing();
+        sb.append(")\n");
+        ifIdent = 0;
+        spacing();
+        sb.append(")\n");
     }
 
+    /**
+     * Helper method that checks for a parenthesis
+     */
+    public void checkForParenthesis() {
+        if (sb.lastIndexOf(")") == sb.length() - 1
+                && (sb.lastIndexOf(")") > 0)) {
+            sb.append(" ");
+        }
+    }
+    
+    /**
+     * Helper method for spacing
+     */
+    public void spacing() {
+        for (int i = 0; i < ifIdent; i++) {
+            sb.append(" ");
+        }
+    }
     /**
      * Returns the string builder
      * @return sb.toString() - 
