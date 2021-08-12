@@ -16,8 +16,7 @@
    helps explains how the Visitor pattern grants the ability to use Double Dispatch.  
      
    The Strategy pattern was used when creating the GrepLogVisitor to search for various object types (GitCommit, GitFileEntry, and GitBlob)  
-   * Example:  
-   ```  
+   ```java 
    public interface GrepLogFilter {  
     public boolean matchesCommit(GitCommit commit); 
     public boolean matchesFileEntry(GitFileEntry entry);
@@ -32,5 +31,29 @@
    Note: Added unit tests
 
    ```
+   
+   ### [HW1](https://github.com/hollyjrobertson/COMP311/tree/master/hw1 "Lab 2")
+  #### Problem:  
+  Write a simple adapter class to translate between these two interfaces:
+  
+  ```java 
+  public interface Student {
+    int getId();
+    void setId(int id);
+    String getFirstName();
+    void setFirstName(String firstName);
+    String getLastName();
+    void setLastName(String lastName);
+  }
+
+  public interface LegacyStudent {
+    String getId();
+    void setId(String id);
+    String getFullName();
+    void setFullName(String name);
+  }
+  ```
+
+   
 
    
