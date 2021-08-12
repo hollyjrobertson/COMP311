@@ -1,6 +1,6 @@
 # Course Work ( COMP311 )
 
-### [Lab 2](https://github.com/hollyjrobertson/COMP311/tree/master/Lab1 "Lab 2")
+### [Lab 2](https://github.com/hollyjrobertson/COMP311/tree/master/Lab2 "Lab 2")
   #### Purpose:   
   Focus on the tree structures, recursion, and the [Visitor](https://www.tutorialspoint.com/design_pattern/visitor_pattern.htm "Visitor"), [Strategy](https://www.tutorialspoint.com/design_pattern/strategy_pattern.html "Strategy") and   
    [Composite design patterns.](https://www.tutorialspoint.com/design_pattern/composite_pattern.htm "Composite")
