@@ -271,4 +271,12 @@ public class PostFixOperator extends AbstractVisitor {
 	}
 }
 ```
+ ### [HW5](https://github.com/hollyjrobertson/COMP311/tree/master/hw5 "HW5")
+  #### Problem 1:
+  A k-way heap is like a binary heap except that instead of at most two child nodes, internal nodes 
+  may have up to k children. Just like with binary heaps, k-way heaps can be efficiently kept in an array.  
+  * Provide two formulas for this mapping along with a written explanation and an example of the  
+    mapping. The formulas are: parentOf(j) and ithChildOf(i, j) where j represents a node number   
+    and i is a child number within a node {0, 1, 2, … k-1}.  
+  * Comment on how this will affect the space and time complexity of the operations.
   
