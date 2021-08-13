@@ -304,3 +304,14 @@ public class PostFixOperator extends AbstractVisitor {
    #### Problem 3:
    Write a program that simulates a translation dictionary. 
 
+   ### [HW7](https://github.com/hollyjrobertson/COMP311/tree/master/hw7 "HW7")
+  #### Problem 1:
+  Diagram and then utilize QuickSort and ShellSort  
+  
+  ### [HW8](https://github.com/hollyjrobertson/COMP311/tree/master/hw8.pdf "HW8")
+  #### Problem 1:
+  Diagram and explain an adjacency matrix and it's time complexity, and indirect/direct graphs.  
+  ![image](https://user-images.githubusercontent.com/31171295/129286154-df69e4be-66e6-4273-95a7-68cae3301151.png)
+
+  
+  
