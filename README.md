@@ -278,5 +278,29 @@ public class PostFixOperator extends AbstractVisitor {
   * Provide two formulas for this mapping along with a written explanation and an example of the  
     mapping. The formulas are: parentOf(j) and ithChildOf(i, j) where j represents a node number   
     and i is a child number within a node {0, 1, 2, … k-1}.  
-  * Comment on how this will affect the space and time complexity of the operations.
+  * Comment on how this will affect the space and time complexity of the operations.  
   
+  ###Problem 2:  
+  Draw the binary heap that results from this series of inserts into an initially empty heap:    
+  Insert 10, 12, 1, 14, 6, 5, 8, 15.  Show the result of performing two DeleteMin operations on the  
+  resulting heap.  Show, separately, the result of each individual insert/delete.
+  
+  ### [HW6](https://github.com/hollyjrobertson/COMP311/tree/master/hw6/hw6.pdf "HW6")
+  #### Problem 1:  
+  Consider inserting the keys 71, 23, 73, 99, 44, 79, 89 into a hash table of size N = 10.  
+  Show the result of hashing using:  
+  * separate chaining 
+  * open addressing with linear probing
+  
+  #### Problem 2:
+  Design a data structure that can perform the given operations in the stated worst-case running time:  
+
+	Insert: O(lg n)  
+	Maximum: O(1)  
+	Minimum: O(1)  
+	Extract-max: O(lg n)  
+	Extract-min: O(lg n) 
+	
+   #### Problem 3:
+   Write a program that simulates a translation dictionary. 
+
