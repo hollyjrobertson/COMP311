@@ -313,5 +313,21 @@ public class PostFixOperator extends AbstractVisitor {
   Diagram and explain an adjacency matrix and it's time complexity, and indirect/direct graphs.  
   ![image](https://user-images.githubusercontent.com/31171295/129286154-df69e4be-66e6-4273-95a7-68cae3301151.png)
 
+  ### [HW9](https://github.com/hollyjrobertson/COMP311/tree/master/hw9.pdf "HW9")
+  #### Problem 1:  
+  Apply Dijkstra’s algorithm to the graph below starting from vertex A.  Show the predecessor and distance arrays after each pass of the algorithm.
+
+  #### Problem 2:
+  Apply Prim’s algorithm to the graph below starting from vertex 1.  Show the spanning tree after each edge is added.  
   
+  ### [HW10](https://github.com/hollyjrobertson/COMP311/tree/master/hw10.pdf "HW10")
+  #### Problem 1:  
+  Consider an AVL tree whose root has a height of 5. What is the maximum difference between the depths of any two leaves in this tree. Briefly justify your answer.
+  ```
+  If the difference between any two leaves is greater than 1, it isn’t a balanced AVL tree. It needs to be rotated to fit 
+  the structure of an AVL tree. 
+  ```
+
+  #### Problem 2:
+  Starting with an empty AVL tree, insert the following keys in the order given: 0, 17, 6, 4, 5, 10, 15, 13, 12, 11. Show the AVL tree after each insertion 
   
