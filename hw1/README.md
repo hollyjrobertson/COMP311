@@ -1,7 +1,20 @@
-My Answers are [here](https://github.com/hollyjrobertson/COMP311/blob/master/hw1/RobertsonHolly_Homework_1.pdf "here")
+  ### [HW1](https://github.com/hollyjrobertson/COMP311/tree/master/hw1 "HW1")
+  #### Problem:  
+  Write a simple adapter class to translate between these two interfaces:
+  
+  ```java 
+  public interface Student {
+    int getId();
+    void setId(int id);
+    String getFirstName();
+    void setFirstName(String firstName);
+    String getLastName();
+    void setLastName(String lastName);
+  }
 
-Holly Robertson  
-Franklin University  
-Jan. 2018  
-COMP 311  
-
+  public interface LegacyStudent {
+    String getId();
+    void setId(String id);
+    String getFullName();
+    void setFullName(String name);
+  }
