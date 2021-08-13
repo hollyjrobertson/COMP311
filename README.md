@@ -2,7 +2,7 @@
 
 ### [Lab 2](https://github.com/hollyjrobertson/COMP311/tree/master/Lab2 "Lab 2")
   #### Purpose:   
-  Focus on the tree structures, recursion, and the [Visitor](https://www.tutorialspoint.com/design_pattern/visitor_pattern.htm "Visitor"), [Strategy](https://www.tutorialspoint.com/design_pattern/strategy_pattern.html "Strategy") and   
+  * Focus on the tree structures, recursion, and the [Visitor](https://www.tutorialspoint.com/design_pattern/visitor_pattern.htm "Visitor"), [Strategy](https://www.tutorialspoint.com/design_pattern/strategy_pattern.html "Strategy") and   
   
    ### [HW1](https://github.com/hollyjrobertson/COMP311/tree/master/hw1 "HW1")
  
